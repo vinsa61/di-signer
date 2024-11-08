@@ -25,11 +25,12 @@ export default function Navbar() {
           </Link>
           <Link
             className="text-white flex items-center justify-center h-full px-4"
-            href="/confirmation"
+            href="/accept"
           >
             Accept Requests
           </Link>
         </div>
+        <div className="flex h-full">{/* Username(if logged in) */}</div>
       </div>
     </nav>
   );
