@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -12,45 +12,13 @@ export default function Home() {
       once: false, // Whether animation should only happen once
     });
   }, []);
-  const [isBlurred, setIsBlurred] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsBlurred(entry.isIntersecting);
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    const nextSection = document.querySelector("section");
-    if (nextSection) {
-      observer.observe(nextSection);
-    }
-
-    return () => {
-      if (nextSection) observer.unobserve(nextSection);
-    };
-  }, []);
   return (
     <div>
-      <div className="relative w-[98%] h-[85%] mx-auto overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="/landing-page.mp4"
-          className={`w-full object-cover ${isBlurred ? "blur-md" : ""}`}
-          style={{ marginTop: "0" }}
-        />
-      </div>
       <section
         data-aos="zoom-in"
         data-aos-duration=""
-        className="grid grid-rows-[20px_1fr_20px] w-[98%] mx-auto bg-white text-black items-center justify-items-center min-h-screen pt-8 px-4 pb-20 gap-16 sm:pt-20 sm:px-20 font-[family-name:var(--font-geist-sans)]"
+        className="grid grid-rows-[20px_1fr_20px] w-[98%] mx-auto bg-white text-black items-center justify-items-center min-h-screen pt-8 px-4 pb-20 gap-16 sm:pt-20 sm:px-20 font-[family-name:var(--space-mono)]"
       >
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <Image
@@ -61,7 +29,7 @@ export default function Home() {
             height={38}
             priority
           />
-          <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--space-mono)]">
             <li className="mb-2">
               Get started by editing{" "}
               <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
