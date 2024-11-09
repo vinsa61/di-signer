@@ -1,17 +1,21 @@
-const express = require("express");
-const cors = require("cors");
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
+const authRoutes = require('./routes/auth/auth'); 
 
-// Allow all origins for development (can be restricted later)
-app.use(cors()); // This allows all domains; you can specify which domains to allow
+const port = 3001;
 
-// Add routes
-app.get("/data", (req, res) => {
-  res.json({ message: "This is some data from the backend" });
-});
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
-// Run the server on port 5000
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+
+app.use(express.json());
+app.use('/api/auth', authRoutes);
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((error) => console.error('MongoDB connection error:', error));
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
+

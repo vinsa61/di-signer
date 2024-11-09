@@ -19,6 +19,18 @@ const spaceMono = localFont({
   weight: "100 900",
 });
 
+const spaceMonoBold = localFont({
+  src: [
+    {
+      path: "../fonts/SpaceMono-Bold.ttf",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+  variable: "--space-mono-bold",
+  display: "swap", // Optional for better font rendering
+});
+
 export const metadata: Metadata = {
   title: "Diner",
   description: "Digital Signature Protocol",
@@ -33,7 +45,7 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceMono.variable} antialiased bg-black dark`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceMono.variable} ${spaceMonoBold.variable} antialiased bg-black dark`}
       >
         <div className="flex flex-col items-center justify-center min-h-screen">
           {children}

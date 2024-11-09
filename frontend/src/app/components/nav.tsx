@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="z-30 bg-black w-[98%] mx-auto mt-4 border border-gray-700 border-[0.5] h-[70px] font-[family-name:var(--font-geist-sans)]">
-      <div className="flex items-center h-full md:justify-between md:px-8 px-0 justify-around">
+    <nav className="z-30 bg-black md:w-[98%] w-[92%] mx-auto mt-4 border border-gray-700 border-[0.5] h-[70px] font-[family-name:var(--font-geist-sans)]">
+      <div className="flex items-center h-full md:justify-between px-4 md:px-10 justify-around">
         <div className="flex h-full items-center">
           <Link href="/">
             <Image
